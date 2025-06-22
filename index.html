@@ -121,6 +121,72 @@
     </div>
 
     <!-- mvv section ends -->
+<<<<<<< HEAD
+
+    <!-- Custom Modal for Messages and Confirmations -->
+    <div id="customModal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <p id="modalMessage"></p>
+        <div class="modal-buttons">
+          <button id="modalConfirmBtn" class="btn" style="display: none">
+            Confirmar
+          </button>
+          <button
+            id="modalCancelBtn"
+            class="btn"
+            style="display: none; background-color: #f44336"
+          >
+            Cancelar
+          </button>
+          <button id="modalOkBtn" class="btn" style="display: none">OK</button>
+        </div>
+      </div>
+    </div>
+
+    <!--REGISTRARSE-->
+    <section id="registro" class="registro-section" style="display: none">
+      <div class="registro-modal">
+        <div class="form-box active" id="register-form">
+          <h2>Regístrate</h2>
+          <form>
+            <input type="text" name="nombre" placeholder="Nombre" required />
+
+            <input type="email" name="correo" placeholder="Correo" required />
+
+            <input type="password" name="contraseña" placeholder="Contraseña" />
+            <!--required-->
+
+            <select name="rol" required>
+              <option value="">--Selecciona un rol--</option>
+              <option value="estudiante">Estudiante</option>
+              <option value="conductor">Conductor</option>
+            </select>
+
+            <button type="submit">Registrarse</button>
+
+            <p>
+              ¿Ya tienes una cuenta?
+              <a href="#" onclick="showForm('login-form')">Iniciar Sesión</a>
+            </p>
+          </form>
+        </div>
+
+        <div class="form-box" id="login-form">
+          <h2>Login</h2>
+          <form>
+            <input type="email" name="correo" placeholder="Correo" required />
+            <input type="password" name="contraseña" placeholder="Contraseña" />
+            <!--required-->
+
+            <button type="submit">Iniciar Sesión</button>
+
+            <p>
+              ¿No tienes una cuenta?
+              <a href="#" onclick="showForm('register-form')">Registrarse</a>
+            </p>
+          </form>
+=======
      
      <!-- contact section starts  -->
 
@@ -248,10 +314,16 @@
           <div class="image contact-image">
             <img src="../images/contactanos-img.jpg" alt="Contáctanos" />
           </div>
+>>>>>>> a658771a0db0686cc3e7979473a7c66c261072fc
         </div>
       </div>
     </section>
 
+<<<<<<< HEAD
+    <script src="main.js"></script>
+  </body>
+</html>
+=======
     <!-- contact section ends -->
 
     <!-- footer section starts  -->
@@ -276,3 +348,4 @@
     </section>
 
     <!-- footer section ends -->
+>>>>>>> a658771a0db0686cc3e7979473a7c66c261072fc

@@ -126,7 +126,7 @@ header .fa-bars {
       rgba(203, 227, 218, 0.78),
       rgba(203, 227, 218, 0.78)
     ),
-    url(images/inicio-fondo.jpg) no-repeat;
+    url(../images/inicio-fondo.jpg) no-repeat;
   background-size: cover;
   background-position: center;
 }

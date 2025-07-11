@@ -73,17 +73,13 @@
     <strong>Principales Características de CiviTrack</strong><br><br>
     <strong>Mapa Interactivo en Tiempo Real:</strong><br>
     Visualiza incidentes reportados por la comunidad: tráfico, bloqueos, accidentes, etc.<br><br>
-  </p>
-  <p>
-    <strong>Sistema de Alertas Personalizadas:</strong><br>
-    Notificaciones configurables según las rutas y zonas marcadas como importantes.<br><br>
-  </p>   
+  </p>  
   <p>
     <strong>Reporte Sencillo de Incidentes:</strong><br>
     Los usuarios pueden enviar reportes fácilmente con texto, fotos o audio.<br><br>
   </p>    
   <p>
     <strong>Validación Comunitaria de Reportes:</strong><br>
-    Los usuarios votan para confirmar si un incidente sigue activo o ya fue resuelto.
+    Los usuarios validan los reportes para confirmar si un incidente es veridico o si ya fue resuelto.
   </p>
 </div>

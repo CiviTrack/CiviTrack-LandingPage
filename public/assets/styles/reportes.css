@@ -1,0 +1,856 @@
+/* reportes.css */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
+
+:root {
+  --accent-color: #70b1e6;
+  --text-color: #333;
+  --light-bg: #eee;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Manrope', sans-serif;
+  overflow: hidden;
+  background-color: #eee;
+}
+
+.reportes-container {
+  display: flex;
+  height: 100vh; /* Ocupa el 100% del alto de la ventana */
+  overflow: hidden; /* Evita scroll en el contenedor principal si hay overflow en sub-elementos */
+}
+
+/* --- Sidebar (Menú Lateral) --- */
+.sidebar {
+  width: 120px;
+  background-color: #fdfcfa;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0; /* Padding reducido */
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.sidebar-header {
+  text-align: center;
+  padding: 0.8rem; /* Padding reducido */
+  margin-bottom: 1rem; /* Margen reducido */
+}
+
+.sidebar-header .logo-sidebar-img {
+  width: 100%; /* La imagen ocupa todo el ancho del header */
+  max-width: 90px; /* Ajusta este valor para controlar el tamaño máximo del logo */
+  height: auto;
+  display: block; /* Evita espacio extra debajo de la imagen */
+  margin: 0 auto; /* Centra la imagen */
+}
+
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-nav li {
+  margin-bottom: 0.6rem; /* Margen reducido */
+}
+
+.sidebar-nav .nav-link {
+  display: flex;
+  flex-direction: column; /* Icono y texto apilados para menú más delgado */
+  align-items: center;
+  padding: 0.8rem 0.5rem; /* Padding reducido */
+  color: var(--text-color);
+  font-size: 1rem; /* Tamaño de fuente más pequeño para los enlaces */
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: center; /* Centrar texto */
+  white-space: nowrap; /* Evita que el texto se rompa */
+  overflow: hidden; /* Oculta el overflow si el texto es muy largo */
+  text-overflow: ellipsis; /* Añade puntos suspensivos si el texto es demasiado largo */
+}
+
+.sidebar-nav .nav-link i {
+  margin-right: 0; /* Eliminar margen derecho si el texto está abajo */
+  margin-bottom: 0.3rem; /* Espacio entre icono y texto */
+  color: #0d2e73;
+  font-size: 1.8rem; /* Tamaño de icono más pequeño */
+}
+
+.sidebar-nav .nav-link span {
+    display: block; /* Asegura que el texto esté en una nueva línea */
+}
+
+.sidebar-nav .nav-link:hover,
+.sidebar-nav .nav-link.active {
+  background-color: var(--light-bg);
+  color: #12A18D;
+}
+
+.sidebar-nav .nav-link.active i {
+  color: #12A18D;
+}
+
+/* --- Contenido Principal --- */
+.main-content {
+  flex-grow: 1;
+  margin-left: 120px; /* Ajustar margen para el nuevo ancho del sidebar */
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* Permite el scroll solo si el contenido principal lo excede */
+}
+
+.main-header {
+  background-color: #fdfcfa;
+  padding: 0.8rem 1.5rem; /* Padding reducido */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 90;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 1.8rem; /* Radio más pequeño */
+  overflow: hidden;
+  background-color: var(--light-bg);
+  flex-grow: 1;
+  max-width: 350px; /* Límite de ancho más pequeño */
+}
+
+.search-bar input {
+  flex-grow: 1;
+  padding: 0.7rem 1.2rem; /* Padding reducido */
+  border: none;
+  outline: none;
+  font-size: 1.2rem; /* Tamaño de fuente más pequeño */
+  background: transparent;
+}
+
+.search-bar button {
+  background-color: #0d2e73;
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.2rem; /* Padding reducido */
+  cursor: pointer;
+  font-size: 1.2rem; /* Tamaño de fuente más pequeño */
+  border-radius: 0 1.8rem 1.8rem 0;
+}
+
+.search-bar button:hover {
+  background-color: var(--accent-color);
+}
+
+.user-profile {
+  margin-left: 1rem; /* Margen reducido */
+}
+
+.user-profile img {
+  width: 40px; /* Tamaño de avatar más pequeño */
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #12A18D;
+}
+
+.map-section {
+  flex-grow: 1; /* Permite que ocupe todo el espacio vertical restante */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Alinea el botón al final de la sección */
+  align-items: center;
+  padding: 0; /* Eliminar padding para que el mapa ocupe más */
+  position: relative;
+  overflow: hidden; /* Asegura que la imagen del mapa no desborde */
+  height: calc(100vh - 58px); /* Altura dinámica: 100vh - altura del main-header */
+}
+
+.map-placeholder {
+  width: 100%;
+  height: 100%; /* Ocupa el 100% de la altura de .map-section */
+  background-image: url('../images/mapa.png'); /* Tu imagen del mapa */
+  background-size: cover;
+  background-position: center;
+  border-radius: 0; /* Quitar border-radius para que ocupe toda la esquina */
+  box-shadow: none; /* Quitar sombra para integrar mejor con el fondo */
+  margin-bottom: 0; /* Quitar margen inferior */
+  max-width: none; /* Eliminar restricción de ancho */
+  position: absolute; /* Para que el botón se posicione encima */
+  top: 0;
+  left: 0;
+  z-index: 1; /* Asegura que la imagen esté detrás del botón */
+}
+
+.report-incident-btn {
+  background-color: #0d2e73;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  padding: 0.7rem 1.5rem; /* Padding reducido */
+  border-radius: 2rem; /* Radio más pequeño */
+  font-size: 1.2rem; /* Tamaño de fuente más pequeño */
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); /* Sombra ajustada */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  position: absolute; /* Posicionamiento absoluto dentro de .map-section */
+  bottom: 1.5rem; /* Distancia desde abajo (ajusta según necesites) */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50; /* Asegura que esté por encima del mapa */
+  white-space: nowrap; /* Evita que el texto del botón se rompa */
+}
+
+.report-incident-btn:hover {
+  background-color: var(--accent-color);
+}
+
+/* --- ESTILOS PARA LA SECCIÓN DE LISTADO DE REPORTES --- */
+
+.reports-list-section {
+    padding: 2rem;
+    background-color: #f9f9f9; /* Un fondo ligeramente diferente para la sección */
+    min-height: calc(100vh - 58px); /* Para que ocupe al menos el alto restante */
+    box-sizing: border-box;
+}
+
+.reports-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.reports-header h2 {
+    font-size: 2.2rem;
+    color: #0d2e73; /* Azul oscuro */
+    margin-bottom: 0.5rem;
+    font-family: 'Poppins', sans-serif; /* Si Poppins es tu fuente para títulos */
+}
+
+.reports-header p {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.reports-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Columnas responsivas */
+    gap: 1.5rem; /* Espacio entre tarjetas */
+    max-width: 1200px; /* Ancho máximo para el contenedor de tarjetas */
+    margin: 0 auto; /* Centrar el contenedor */
+    padding-bottom: 3rem; /* Espacio al final para el scroll */
+}
+
+.report-card {
+    background-color: #fff;
+    border-radius: 0.8rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Empuja el botón "Ver Detalles" al final */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.report-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.report-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.report-incident-type {
+    background-color: #70b1e6; /* Color de tu accent-color */
+    color: #fff;
+    padding: 0.4rem 0.9rem;
+    border-radius: 1.2rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.report-status {
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.3rem 0.8rem;
+    border-radius: 1rem;
+    text-transform: uppercase;
+}
+
+.active-status {
+    color: #12A18D; /* Verde de tu logo/acentos */
+    background-color: rgba(18, 161, 141, 0.1); /* Verde claro */
+}
+
+.resolved-status {
+    color: #d9534f; /* Rojo para resuelto */
+    background-color: rgba(217, 83, 79, 0.1);
+}
+
+.report-card-body p {
+    margin-bottom: 0.6rem;
+    color: #555;
+    font-size: 1rem;
+    display: flex;
+    align-items: flex-start; /* Para que el texto se alinee con el icono si es largo */
+    gap: 0.5rem; /* Espacio entre icono y texto */
+}
+
+.report-card-body p i {
+    color: #888;
+    font-size: 0.9rem;
+    min-width: 1.2rem; /* Asegura que el icono tenga espacio */
+    text-align: center;
+    padding-top: 0.1rem; /* Pequeño ajuste vertical para los iconos */
+}
+
+.report-description {
+    font-size: 0.95rem;
+    color: #333;
+    line-height: 1.4;
+    background-color: #f9f9f9; /* Fondo similar al del resumen del modal */
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    border: 1px solid #eee;
+    word-wrap: break-word;
+    margin-top: 1rem;
+    flex-grow: 1; /* Permite que la descripción empuje el botón hacia abajo */
+}
+
+.report-card-actions {
+    margin-top: 1.5rem;
+    text-align: right;
+}
+
+.view-details-btn {
+    background-color: #0d2e73;
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 2rem;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.view-details-btn:hover {
+    background-color: #12A18D;
+}
+
+/* --- Estilos del Modal de Reporte --- */
+.modal {
+  display: none; /* Oculto por defecto */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+  /* Propiedades de centrado, solo se aplicarán cuando la clase 'active' esté presente */
+  justify-content: center;
+  align-items: center;
+}
+
+.modal.active { /* Nueva regla: el modal se muestra y centra solo con esta clase */
+    display: flex;
+}
+
+.modal-content-report {
+  background-color: #fff;
+  padding: 1.8rem; /* Aumentado ligeramente para mejor espacio visual */
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  width: 90%; /* Ajuste a un porcentaje para ser más responsivo */
+  max-width: 450px; /* Ancho máximo para el modal de reporte */
+  position: relative;
+  max-height: 80vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.modal-content-report h2 {
+  text-align: center;
+  font-size: 1.8rem; /* Tamaño de título más acorde a la imagen */
+  color: #12A18D; /* Color del título, como en la imagen */
+  margin-bottom: 1.8rem; /* Más espacio debajo del título */
+  line-height: 1.2;
+  font-family: 'Poppins', sans-serif;
+}
+
+.modal-content-report #modalMessage.modal-title {
+    color: #12A18D; /* Verde de tu logo y acentos */
+    font-weight: 600; /* Un poco más de peso */
+    font-size: 1.8rem;
+    margin-bottom: 1.8rem;
+}
+
+.modal-content-report .close-button {
+  color: #aaa;
+  font-size: 2rem;
+  position: absolute;
+  top: 0.8rem;
+  right: 1rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.modal-content-report .close-button:hover,
+.modal-content-report .close-button:focus {
+  color: #333; /* Usando el valor directo de --text-color */
+}
+
+/* Incident Type Buttons */
+.incident-type-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem; /* Espacio entre botones */
+  margin-bottom: 1.5rem;
+  justify-content: center;
+}
+
+.btn-incident-type {
+  background-color: transparent;
+  border: 1.5px solid #0d2e73;
+  color: #0d2e73;
+  padding: 0.5rem 1.1rem; /* Padding */
+  border-radius: 1.5rem;
+  font-size: 1rem; /* Fuente más pequeña */
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.btn-incident-type:hover,
+.btn-incident-type.selected {
+  background-color: #70b1e6;
+  border-color: #70b1e6;
+  color: #fff;
+}
+
+/* Form Inputs */
+.input-group {
+  position: relative;
+  margin-bottom: 1.4rem; /* Más espacio entre grupos de input */
+}
+
+.input-group input,
+.modal-content-report textarea {
+  width: calc(100% - 2.5rem); /* Ajuste para dejar espacio para el icono */
+  padding: 0.9rem 0.8rem 0.9rem 3rem; /* Padding: top, right, bottom, left (para el icono) */
+  border: 1px solid #ddd;
+  border-radius: 0.6rem;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+}
+
+.modal-content-report textarea {
+  resize: vertical;
+  padding: 0.9rem 1rem; /* Padding normal para el textarea sin icono */
+  margin-bottom: 1.4rem;
+  height: 80px; /* Altura inicial del textarea */
+  padding-left: 1rem; /* Sin icono a la izquierda para el textarea */
+}
+
+.input-group input:focus,
+.modal-content-report textarea:focus {
+  border-color: #12A18D;
+  box-shadow: 0 0 0 1px rgba(18, 161, 141, 0.2);
+}
+
+.input-group .input-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 1.1rem;
+  pointer-events: none;
+}
+
+/* Form Actions (Buttons at the bottom) */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.8rem;
+  margin-top: 1.8rem; /* Más margen superior */
+}
+
+.form-actions .btn {
+  padding: 0.7rem 1.4rem; /* Padding ajustado */
+  font-size: 1.1rem; /* Fuente un poco más grande */
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.form-actions .cancel-btn {
+  background-color: #f0f0f0;
+  color: #333; /* Usando el valor directo de --text-color */
+  border: 1px solid #ccc;
+}
+
+.form-actions .cancel-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.form-actions .submit-btn {
+  background-color: #0d2e73;
+  color: #fff;
+  border: none;
+}
+
+.form-actions .submit-btn:hover {
+  background-color: #12A18D;
+  transform: translateY(-1px);
+}
+
+/* --- ESTILOS PARA EL RESUMEN DEL REPORTE --- */
+.modal-content-report #reportSummaryContent {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+    font-size: 1rem;
+}
+
+.summary-item {
+    display: flex; /* Sigue siendo flex para alinear icono y texto dentro de la misma "línea" */
+    align-items: center;
+    gap: 0.5rem; 
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Estilo específico para el botón de tipo de incidente en el resumen */
+.summary-item .btn-incident-type {
+    font-size: 1rem;
+    padding: 0.4rem 0.9rem;
+    border-radius: 1.2rem;
+    background-color: #70b1e6;
+    color: #fff;
+    border: none;
+    cursor: default;
+    pointer-events: none;
+    font-weight: 500;
+}
+
+/* Alineación de íconos y texto para fecha/hora */
+.date-info-row { 
+    display: flex;
+    align-items: center;
+    gap: 1.5rem; /* Este 'gap' es el que separa la fecha de la hora */
+}
+
+/* Alineación de íconos y texto para fecha/hora y ubicación */
+.date-info-row i, /* Incluye los iconos de la nueva fila de fecha/hora */
+.location-info-row i { /* Incluye los iconos de la nueva fila de ubicación */
+    color: #888;
+    font-size: 1rem;
+    min-width: 1.2rem;
+    text-align: center;
+}
+
+/* Para el texto de fecha/hora */
+.date-info-row span {
+    font-weight: 500;
+}
+
+/* Ubicación */
+.location-info-row span {
+    word-break: break-word;
+}
+
+/* Descripción */
+.description-info-row {
+    display: flex;
+    flex-direction: column; /* Queremos que la etiqueta esté arriba y el texto abajo */
+    gap: 0.3rem; /* Espacio entre la etiqueta "¿Qué está pasando?" y el texto de la descripción */
+    align-items: flex-start; /* Alinea los elementos a la izquierda, no al centro como en .summary-item */
+}
+
+.summary-label {
+    font-weight: 600;
+    color: #0d2e73;
+    margin-bottom: 0.2rem;
+    font-size: 0.9rem;
+}
+
+.summary-text {
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #333;
+    background-color: #f9f9f9;
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    border: 1px solid #eee;
+    text-align: left;
+    word-wrap: break-word;
+    width: 100%; /* Asegura que ocupe el ancho completo disponible */
+}
+
+/* Ajustes para el botón "Enviar Reporte" en el resumen */
+.form-actions #modalConfirmBtn {
+    background-color: #0d2e73;
+}
+
+.form-actions #modalConfirmBtn:hover {
+    background-color: #12A18D;
+}
+
+/* Ajustes para el botón "Cancelar" en el resumen */
+.form-actions #modalCancelBtn {
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ccc;
+}
+.form-actions #modalCancelBtn:hover {
+    background-color: #e0e0e0;
+}
+
+.delete-report-btn {
+    background-color: transparent; /* Fondo transparente */
+    color: #d9534f; /* Color rojo para el icono de basura */
+    border: none;
+    padding: 0.5rem;
+    font-size: 1.2rem; /* Tamaño del icono */
+    cursor: pointer;
+    transition: color 0.3s ease;
+    margin-right: 1rem; /* Espacio entre el tacho y el botón "Ver Detalles" */
+}
+
+.delete-report-btn:hover {
+    color: #c9302c; /* Rojo más oscuro al pasar el mouse */
+}
+
+.report-card-actions {
+    display: flex; /* Para alinear el botón de eliminar y ver detalles */
+    justify-content: flex-end; /* Alinear a la derecha */
+    align-items: center; /* Centrar verticalmente los elementos */
+    margin-top: 1.5rem;
+}
+
+/* Media Queries (Ordenadas de mayor a menor ancho) */
+
+@media (max-width: 991px) {
+  .sidebar {
+    width: 60px; /* Sidebar aún más pequeño */
+    padding: 1rem 0;
+  }
+  .sidebar-header .logo-sidebar-img {
+    max-width: 50px; /* Ajustar tamaño del logo en pantallas medianas si es necesario */
+  }
+  .sidebar-nav .nav-link {
+    font-size: 1rem;
+    padding: 0.6rem 0.5rem;
+  }
+  .sidebar-nav .nav-link i {
+    font-size: 1.6rem;
+    margin-bottom: 0.2rem;
+  }
+  .main-content {
+    margin-left: 60px; /* Ajusta el margen del contenido principal */
+  }
+  .main-header {
+    padding: 0.8rem 1.2rem;
+  }
+  .search-bar {
+    max-width: 280px; /* Límite de ancho para barra de búsqueda */
+  }
+  .search-bar input {
+    font-size: 1.2rem;
+    padding: 0.6rem 1rem;
+  }
+  .search-bar button {
+    font-size: 1.4rem;
+    padding: 0.6rem 1rem;
+  }
+  .user-profile img {
+    width: 30px;
+    height: 30px;
+  }
+  .report-incident-btn {
+    bottom: 1.5rem;
+    padding: 0.7rem 1.8rem;
+    font-size: 1.3rem;
+  }
+  .map-section {
+    height: calc(100vh - 50px); /* Ajustar altura del mapa en pantallas medianas si el header cambia de alto */
+  }
+}
+
+@media (max-width: 768px) {
+  .reportes-container {
+    flex-direction: column;
+    height: auto; /* Permite que el contenedor crezca si es necesario */
+    overflow-y: auto; /* Permite scroll global si el contenido es demasiado largo */
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0.8rem 0;
+  }
+
+  .sidebar-header {
+    display: none; /* Oculta el logo en el sidebar superior en móviles */
+  }
+
+  .sidebar-nav {
+    width: 100%;
+  }
+
+  .sidebar-nav ul {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .sidebar-nav li {
+    margin-bottom: 0;
+  }
+
+  .sidebar-nav .nav-link {
+    font-size: 1.1rem;
+    padding: 0.6rem 0.8rem;
+  }
+
+  .sidebar-nav .nav-link i {
+    margin-bottom: 0.3rem;
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding-top: 1rem;
+    min-height: calc(100vh - 65px); /* Ajustar para que el contenido principal tenga altura mínima (estimación del sidebar en móvil) */
+  }
+
+  .main-header {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .search-bar {
+    width: 90%;
+    margin-bottom: 0.8rem;
+    max-width: unset;
+  }
+
+  .user-profile {
+    margin-left: 0;
+    margin-top: 0.6rem;
+  }
+
+  .map-section {
+    padding: 0;
+    height: 450px; /* Altura fija para el mapa en móvil, ajusta si es necesario */
+    justify-content: center; /* Centrar el botón verticalmente dentro del mapa */
+  }
+
+  .report-incident-btn {
+    position: relative; /* Cambia a relativo para que fluya en el documento */
+    bottom: unset;
+    left: unset;
+    transform: unset;
+    margin-top: 1.5rem; /* Margen superior para separarlo del mapa si es relativo */
+    width: 70%;
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 600px) {
+  .modal-content-report {
+    padding: 1rem; /* Padding aún más pequeño en móvil */
+    width: 90%;
+  }
+  .modal-content-report h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+  }
+  .modal-content-report .close-button {
+    font-size: 1.8rem;
+    top: 0.5rem;
+    right: 0.8rem;
+  }
+  .incident-type-buttons {
+    gap: 0.3rem;
+    margin-bottom: 1.2rem;
+  }
+  .btn-incident-type {
+    padding: 0.4rem 0.8rem;
+    font-size: 1rem;
+  }
+  .input-group input,
+  .modal-content-report textarea {
+    font-size: 1rem;
+    padding: 0.7rem 0.7rem 0.7rem 2.5rem; /* Ajuste del padding para el icono */
+  }
+  .modal-content-report textarea {
+    padding-left: 0.7rem;
+  }
+  .input-group .input-icon {
+    font-size: 1rem;
+    left: 0.8rem;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .form-actions .btn {
+    width: 90%;
+    max-width: 180px;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .sidebar-nav .nav-link {
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
+  .sidebar-nav .nav-link i {
+    font-size: 1.5rem;
+  }
+  .map-section {
+    height: 300px; /* Altura más pequeña del mapa en móviles pequeños */
+  }
+  .report-incident-btn {
+    font-size: 1.3rem;
+    padding: 0.7rem 1.5rem;
+  }
+  .search-bar input {
+    font-size: 1.2rem;
+  }
+  .search-bar button {
+    font-size: 1.4rem;
+  }
+  .user-profile img {
+    width: 28px;
+    height: 28px;
+  }
+}

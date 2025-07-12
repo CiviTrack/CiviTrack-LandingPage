@@ -6,20 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CiviTrack</title>
 
-    <!-- font awesome cdn link  -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
 
-    <!-- custom css file link  -->
+    <!-- CODIGO DE GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Jost:ital,wght@0,100..900;1,100..900&family=Konkhmer+Sleokchher&family=Lexend&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="contactanos.css" />
     <link rel="stylesheet" href="Registrate.css" />
   </head>
   <body>
-    <!-- header section starts  -->
 
+    <!-- header section starts  -->
     <header>
       <input type="checkbox" name="" id="toggler" />
       <label for="toggler" class="fas fa-bars"></label>
@@ -29,7 +32,9 @@
       <nav class="navbar">
         <a href="#inicio">Inicio</a>
         <a href="#sobre">Sobre la Aplicación</a>
+        <a href="#equipo">Sobre el Equipo</a>
         <a href="#contactanos">Contáctanos</a>
+
       </nav>
 
       <div class="botton">
@@ -38,11 +43,9 @@
         >
       </div>
     </header>
-
     <!-- header section ends -->
 
     <!-- home section starts  -->
-
     <div class="home-container">
       <section class="home" id="inicio">
         <div class="content">
@@ -56,14 +59,11 @@
         </div>
       </section>
     </div>
-
     <!-- home section ends -->
 
     <!-- about section starts  -->
-
     <section class="about" id="sobre">
       <h1 class="heading"><span> Sobre la </span> Aplicación</h1>
-
       <div class="row">
         <div class="video-container-about">
           <iframe
@@ -117,11 +117,9 @@
         </div>
       </div>
     </section>
-
     <!-- about section ends -->
 
     <!-- mvv section starts  -->
-
     <div class="mvv-container">
       <section class="box-container">
         <div class="box">
@@ -162,10 +160,64 @@
       </section>
     </div>
 
-    <!-- mvv section ends -->
+  <!-- mvv section ends -->
+
+  <!-- development team section -->
+<section class="development-team" id="equipo">
+    <div class="container">
+        <h1 class="heading"><span>Sobre el</span> Equipo</h1>
+        <div class="team-list">
+            <div class="team-member">
+                <img src="../images/integrante1.png" alt="Jhohandri">
+                <h3>Jhohandri Jhunior Contreras Quijua</h3>
+                <p data-i18n="team.role">Integrante</p>
+            </div>
+
+            <div class="team-member">
+                <img src="../images/integrante2.png" alt="Ariana">
+                <h3>Ariana Lizeth Ramirez Carrasco</h3>
+                <p data-i18n="team.role">Integrante</p>
+            </div>
+
+            <div class="team-member">
+                <img src="../images/integrante3.png" alt="Anjely">
+                <h3>Anjely Luciana Geronimo Quispe</h3>
+                <p data-i18n="team.role">Integrante</p>
+            </div>
+
+            <div class="team-member">
+                <img src="../images/integrante4.png" alt="Billy">
+                <h3>Billy Jake Ruiz Madrid</h3>
+                <p data-i18n="team.role">Integrante</p>
+            </div>
+        </div>
+
+        <div class="team-video-section">
+            <div class="row">
+                <div class="video-container-about">
+          <iframe
+            src="https://www.youtube.com/embed/L5CyI87L26I"
+            title="CiviTrack: Video About The Product"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+                </div>
+                <div class="content">
+                    <h3>Nuestro Compromiso como Equipo</h3>
+                    <p>
+                        Somos un grupo de estudiantes apasionados por la tecnología y la movilidad sostenible. Nuestro objetivo es crear soluciones innovadoras que mejoren la experiencia de la comunidad universitaria.
+                    </p>
+                    <p>
+                        A través de CiviTrack, buscamos fomentar una forma más eficiente y segura de viajar, construyendo herramientas que realmente resuelvan los desafíos del día a día de estudiantes y conductores.
+                    </p>
+                </div>
+            </div>
+        </div>
+        </div>
+</section>
+  <!-- development team section ends-->
 
     <!-- contact section starts  -->
-
     <section class="contact" id="contactanos">
       <h1 class="heading"><span> Contáctanos </span></h1>
 
@@ -304,8 +356,8 @@
           <h3>© 2025 CiviTrack. Todos los derechos reservados.</h3>
           <span>Facilitamos la movilidad entre estudiantes y conductores.</span>
           <a href="#">contacto@civitrack.com</a>
-          <a href="#">Política de privacidad</a>
-          <a href="#">Términos y condiciones </a>
+          <a href="../documents/PoliticaDePrivacidad.pdf">Política de privacidad</a>
+          <a href="../documents/TerminosyCondiciones.pdf">Términos y condiciones </a>
         </div>
 
         <div class="box app-links">
@@ -343,21 +395,18 @@
     <!--REGISTRARSE-->
     <section id="registro" class="registro-section" style="display: none">
       <div class="registro-modal">
+        <!-- Paso 1: Registro -->
         <div class="form-box active" id="register-form">
           <h2>Regístrate</h2>
-          <form>
-            <input type="text" name="nombre" placeholder="Nombre" required />
+          <form id="formRegistro">
+            <input type="text" id="regNombre" placeholder="Nombre" />
+            <span class="error-message" id="nombreError"></span>
 
-            <input type="email" name="correo" placeholder="Correo" required />
+            <input type="text" id="regCorreo" placeholder="Correo" />
+            <span class="error-message" id="correoError"></span>
 
-            <input type="password" name="contraseña" placeholder="Contraseña" />
-            <!--required-->
-
-            <select name="rol" required>
-              <option value="">--Selecciona un rol--</option>
-              <option value="estudiante">Estudiante</option>
-              <option value="conductor">Conductor</option>
-            </select>
+            <input type="password" id="regPassword" placeholder="Contraseña" />
+            <span class="error-message" id="passwordError"></span>
 
             <button type="submit">Registrarse</button>
 
@@ -368,12 +417,62 @@
           </form>
         </div>
 
+        <!-- Paso 2: Universidad y Año -->
+        <div class="form-box" id="step-universidad">
+          <h2>Indica a que universidad o institución perteneces</h2>
+          <select id="universidad" class="box">
+            <option value="">Selecciona aquí</option>
+            <option>Universidad de Lima</option>
+            <option>Universidad Católica del Perú</option>
+            <option>Universidad de Ciencias Aplicadas</option>
+            <option>Universidad del Pacífico</option>
+            <option>Universidad Nacional Mayor de San Marcos</option>
+          </select>
+
+          <h3>Desde qué año perteneces:</h3>
+          <div class="year-buttons">
+            <button type="button" class="year-btn">2025</button>
+            <button type="button" class="year-btn">2024</button>
+            <button type="button" class="year-btn">2023</button>
+            <button type="button" class="year-btn">2022</button>
+            <button type="button" class="year-btn">2021</button>
+            <button type="button" class="year-btn">2020</button>
+            <button type="button" class="year-btn">Otro</button>
+          </div>
+
+          <button class="btn" id="btnToRol">Siguiente</button>
+        </div>
+
+        <!-- Paso 3: Rol -->
+        <div class="form-box" id="step-rol">
+          <h2>Selecciona el rol que representarás en CiviTrack</h2>       
+          <button class="rol-btn" data-rol="estudiante">
+            <div class="rol-bg" style="background-image: url('../images/estudiante.jpg');"></div>
+            <div class="rol-overlay"></div>
+            <span class="rol-text">ESTUDIANTE</span>
+          </button>
+          
+          <button class="rol-btn" data-rol="conductor">
+            <div class="rol-bg" style="background-image: url('../images/conductor.png');"></div>
+            <div class="rol-overlay"></div>
+            <span class="rol-text">CONDUCTOR</span>
+          </button>
+          </div>
+        </div>
+
+        <!-- Login -->
         <div class="form-box" id="login-form">
           <h2>Login</h2>
-          <form>
-            <input type="email" name="correo" placeholder="Correo" required />
-            <input type="password" name="contraseña" placeholder="Contraseña" />
-            <!--required-->
+          <form id="loginForm" novalidate>
+            <input type="email" id="loginCorreo" placeholder="Correo" />
+            <span class="error-message" id="loginCorreoError"></span>
+
+            <input
+              type="password"
+              id="loginPassword"
+              placeholder="Contraseña"
+            />
+            <span class="error-message" id="loginPasswordError"></span>
 
             <button type="submit">Iniciar Sesión</button>
 
@@ -386,6 +485,6 @@
       </div>
     </section>
 
-    <script src="../scripts/main.js"></script>
+    <script src="../scripts/utils.js"></script> <script src="../scripts/main.js"></script>
   </body>
 </html>

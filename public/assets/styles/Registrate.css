@@ -1,133 +1,283 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
 
 body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  outline: none;
-  border: none;
-  text-decoration: none;
-  transition: 0.2s linear;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    transition: 0.2s linear;
 }
 
 body.no-scroll {
-  overflow: hidden;
+    overflow: hidden;
 }
 
 .registro-section {
-  width: 100%;
-  position: fixed;
-  top: 30rem;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.308);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-  padding: 2rem;
-  backdrop-filter: blur(4px);
-  box-sizing: border-box;
+    width: 100%;
+    position: fixed;
+    top: 30rem; /* Ajusta este valor si tu header tiene una altura diferente */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, #0d2e73, #12a18d);
+    display: flex; /* Permite centrar el contenido fácilmente */
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    padding: 2rem;
+    backdrop-filter: blur(4px);
+    box-sizing: border-box;
+    display: none; /* Por defecto oculto, se muestra con JS */
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  width: 100%;
-  max-width: 500px;
-  padding: 2rem;
+/* Contenedor general para los formularios dentro de .registro-section */
+.form-container-wrapper { /* Nombre más específico para evitar conflictos */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    max-width: 500px; /* Ajusta según el diseño deseado */
+    padding: 2rem;
 }
 
-.container {
-  width: 100%;
-  max-width: 450px;
-  padding: 20px;
-}
 
+/* Estilo base para todos los "pasos" o "formularios" individuales dentro del modal */
 .form-box {
-  max-width: 450px;
-  width: 90%;
-  padding: 30px;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  display: none;
+    max-width: 450px;
+    width: 90%;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none; /* Por defecto oculto */
+    z-index: 1001; /* Asegura que esté sobre el fondo */
+    position: relative; /* Para posicionamiento de elementos internos si es necesario */
 }
 
+/* Regla para mostrar el formulario/paso activo */
 .form-box.active {
-  display: block;
+    display: block; /* Se muestra cuando tiene la clase active. Si el contenido es flex, usa display: flex; */
 }
 
 h2 {
-  font-size: 2.5rem;
-  text-align: center;
-  color: #0d2e73;
-  margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+    text-align: center;
+    color: #0d2e73;
+    margin-bottom: 1.5rem;
 }
 
 input,
 select {
-  width: 100%;
-  padding: 1rem;
-  background: #f2f2f2;
-  border-radius: 0.5rem;
-  border: 1px solid #ccc;
-  font-size: 1.6rem;
-  color: #333;
-  margin-bottom: 1.2rem;
+    width: 100%;
+    padding: 1rem;
+    background: #f2f2f2;
+    border-radius: 0.5rem;
+    border: 1px solid #ccc;
+    font-size: 1.6rem;
+    color: #333;
+    margin-bottom: 1.2rem;
 }
 
 button {
-  width: 100%;
-  padding: 1rem;
-  background-color: #12a18d;
-  border-radius: 0.5rem;
-  border: none;
-  cursor: pointer;
-  font-size: 1.6rem;
-  color: white;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
+    width: 100%;
+    padding: 1rem;
+    background-color: #12a18d;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    font-size: 1.6rem;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #0d2e73;
+    background-color: #0d2e73;
 }
 
 p {
-  font-size: 1.4rem;
-  text-align: center;
-  margin-top: 1rem;
+    font-size: 1.4rem;
+    text-align: center;
+    margin-top: 1rem;
 }
 
 p a {
-  color: #0d2e73;
-  text-decoration: none;
-  font-weight: 500;
+    color: #0d2e73;
+    text-decoration: none;
+    font-weight: 500;
 }
 
 p a:hover {
-  text-decoration: underline;
-}
-
-.form-box {
-  z-index: 1001;
-  position: relative;
+    text-decoration: underline;
 }
 
 #registro {
-  max-width: none;
-  margin: 0;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+}
+
+#step-universidad h2,
+#step-rol h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #0d2e73;
+}
+
+#step-universidad h3,
+#step-rol h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    color: #000000;
+}
+
+/* --- universidades --- */
+#universidad {
+    background-color: #ffffff;
+    color: #000000;
+    width: 100%;
+    padding: 0.7rem;
+    margin-bottom: 1.2rem;
+    border: 1px solid #091075;
+    border-radius: 8px;
+    font-size: 1.5rem;
+}
+
+/* --- Botones de año --- */
+.year-buttons-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem; /* Espacio debajo de los botones de año */
+}
+
+.year-btn {
+    padding: 0.6rem 1rem;
+    border: 2px solid #003366;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #000000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.year-btn.selected,
+.year-btn:hover {
+    background-color: #1238a18a;
+    color: white;
+}
+
+/* --- Botón siguiente --- */
+#btnToRol {
+    margin-top: 1.2rem;
+    padding: 0.7rem;
+    background-color: #12a18d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#btnToRol:hover {
+    background-color: #0d2e73; /* Corregí el hover para que cambie de color */
+}
+
+/* --- Selección de rol --- */
+.rol-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 1rem; /* Espacio encima de los botones de rol */
+}
+
+.rol-btn {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  height: 140px;
+  margin: 1rem auto;
   padding: 0;
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  background: none;
+  cursor: pointer;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rol-btn:hover {
+    transform: scale(1.05);
+    background-image: linear-gradient(to right, #003366, #0052a3);
+}
+
+.rol-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rol-img-only {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.rol-icon {
+    width: 50px;
+    height: auto;
+    margin-bottom: 0.5rem;
+}
+
+.rol-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.6);
+    z-index: 1;
+}
+
+.rol-text {
+    position: relative;
+    z-index: 2;
+    color: white;
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-shadow: 0 2px 4px rgba(37, 43, 121, 0.6);
+    text-align: center;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

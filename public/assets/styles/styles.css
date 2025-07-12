@@ -10,7 +10,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'Manrope', sans-serif;
   outline: none;
   border: none;
   text-decoration: none;
@@ -83,7 +83,7 @@ header .logo span {
 }
 
 header .navbar a {
-  font-size: 2rem;
+  font-size: 1.8rem;
   padding: 0 1.5rem;
   color: #0d2e73;
 }
@@ -285,6 +285,123 @@ header .fa-bars {
   color: #4f4f4f;
   font-size: 1.5rem;
 }
+/* --- Sección: Sobre el Equipo --- */
+.development-team {
+    padding: 60px 20px;
+    margin-bottom: 5px;
+}
+
+/* Contenedor de la lista de miembros  */
+.team-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Tarjeta individual del miembro del equipo */
+.team-member {
+    flex: 1 1 200px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 250px;
+}
+
+.team-member:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Imagen del miembro del equipo */
+.team-member img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 10px;
+    border: 4px solid #70b1e6;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Nombre del miembro del equipo */
+.team-member h3 {
+    margin: 0 0 8px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #0d2e73;
+}
+
+.team-member p {
+    margin: 0;
+    color: #12A18D;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.team-video-section {
+    margin-top: 80px; /* Espacio superior para separarlo de los miembros del equipo */
+    padding: 40px 0;
+    background-color: #f9f9f9; /* Un color de fondo suave para diferenciarla */
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); /* Sombra ligera */
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.team-video-section .row {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+    align-items: center; /* Centra verticalmente el video y el contenido */
+    justify-content: center;
+    gap: 40px; /* Espacio entre el video y el texto */
+    padding: 0 30px; /* Padding interno */
+}
+
+.team-video-section .video-container-about {
+    flex: 1 1 500px; 
+    position: relative;
+    padding-bottom: 28.125%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.team-video-section .video-container-about iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 10px; /* Para que el iframe también tenga bordes redondeados */
+}
+
+.team-video-section .content {
+    flex: 1 1 400px; /* El contenido puede crecer/encoger, con un tamaño base de 400px */
+    text-align: left;
+}
+
+.team-video-section .content h3 {
+    font-size: 28px; /* Título un poco más grande */
+    color: #0d2e73; /* Color azul oscuro de Civitrack */
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.team-video-section .content p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 15px;
+}
 
 .footer {
   padding: 3rem 0;
@@ -444,6 +561,40 @@ header .fa-bars {
     width: 250px;
     margin: 0 auto;
   }
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+    .team-video-section .row {
+        flex-direction: column; /* Apilar elementos en pantallas pequeñas */
+        text-align: center;
+        gap: 30px;
+    }
+
+    .team-video-section .content {
+        text-align: center;
+    }
+
+    .team-video-section .video-container-about {
+        width: 90%; /* Ancho del video en móviles */
+        padding-bottom: 56.25%; /* Vuelve a la relación 16:9 completa para móviles */
+        flex: none; /* Elimina el flex-basis para que width y padding-bottom controlen */
+    }
+}
+
+@media (max-width: 480px) {
+    .team-video-section {
+        padding: 30px 15px;
+        margin-top: 50px;
+    }
+
+    .team-video-section .content h3 {
+        font-size: 24px;
+    }
+
+    .team-video-section .content p {
+        font-size: 16px;
+    }
 }
 
 @media (max-width: 450px) {

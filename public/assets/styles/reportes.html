@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CiviTrack - Reportes</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;0&family=Jost:ital,wght@0,100..900;1,100..900&family=Konkhmer+Sleokchher&family=Lexend&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+ 
+    <link rel="stylesheet" href="reportes.css" />
+  </head>
+  <body>
+
+    <div class="reportes-container">
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <img src="../images/logo-img.jpeg" alt="CiviTrack Logo" class="logo-sidebar-img">
+        </div>
+        <nav class="sidebar-nav">
+          <ul>
+            <li>
+              <a href="#" class="nav-link active"
+                ><i class="fas fa-home"></i> <span>Inicio</span></a
+              >
+            </li>
+            <li>
+              <a href="#" class="nav-link"
+                ><i class="fas fa-file-alt"></i> <span>Ver Reportes</span></a
+              >
+            </li>
+            </ul>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <header class="main-header">
+          <div class="search-bar">
+            <input type="text" placeholder="Buscar ubicación..." />
+            <button><i class="fas fa-search"></i></button>
+          </div>
+          <div class="user-profile">
+            <img src="../images/usuario-icon.png" alt="Usuario" />
+          </div>
+        </header>
+
+        <section class="map-section" id="mapSection"> <div class="map-placeholder"></div>
+          <button class="btn report-incident-btn" id="openReportModalBtn">Reportar Incidente</button>
+        </section>
+
+        <section class="reports-list-section" id="reportsListSection" style="display: none;">
+            <div class="reports-header">
+                <h2>Mis Reportes</h2>
+                <p>Aquí puedes ver los incidentes que has reportado.</p>
+            </div>
+            <div class="reports-container" id="reportsContainer">
+                </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="reportIncidentModal" class="modal">
+      <div class="modal-content-report">
+        <span class="close-button" id="closeReportModalBtn">&times;</span>
+        <h2>¿Qué tipo de incidente quieres reportar?</h2>
+        <form id="incidentReportForm">
+          <div class="incident-type-buttons">
+            <button type="button" class="btn-incident-type" data-type="trafico">Tráfico</button>
+            <button type="button" class="btn-incident-type" data-type="bache">Bache en la pista</button>
+            <button type="button" class="btn-incident-type" data-type="accidente">Accidente vial</button>
+            <button type="button" class="btn-incident-type" data-type="desvio">Desvío</button>
+            <button type="button" class="btn-incident-type" data-type="inundacion">Inundación</button>
+            <button type="button" class="btn-incident-type" data-type="otros">Otros</button>
+          </div>
+          <p class="error-message" id="incidentTypeError"></p>
+
+          <div class="input-group">
+            <input type="text" id="ubicacion" placeholder="Ubicación" required />
+            <span class="input-icon"><i class="fas fa-map-marker-alt"></i></span>
+            <p class="error-message" id="ubicacionError"></p>
+          </div>
+          <div class="input-group">
+            <input type="text" id="fecha" placeholder="Fecha" required />
+            <span class="input-icon"><i class="fas fa-calendar-alt"></i></span>
+            <p class="error-message" id="fechaError"></p>
+          </div>
+          <div class="input-group">
+            <input type="text" id="hora" placeholder="Hora" required />
+            <span class="input-icon"><i class="fas fa-clock"></i></span>
+            <p class="error-message" id="horaError"></p>
+          </div>
+
+          <textarea id="descripcion" placeholder="Describe lo que sucede y sugiere una ruta alternativa si es posible" rows="4"></textarea>
+          <p class="error-message" id="descripcionError"></p>
+
+
+          <div class="form-actions">
+            <button type="button" class="btn cancel-btn" id="cancelReportBtn">Cancelar</button>
+            <button type="submit" class="btn submit-btn">Siguiente</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="customModal" class="modal">
+        <div class="modal-content-report">
+            <span class="close-button" id="closeCustomModalBtn">&times;</span>
+            <h2 id="modalMessage" class="modal-title"></h2>
+
+            <div id="reportSummaryContent" style="display:none;">
+                <div class="summary-item incident-type-container">
+                    <button class="btn-incident-type selected" id="summaryIncidentTypeDisplay"></button>
+                </div>
+
+                <div class="summary-item date-time-group">
+                    <span class="summary-info-block">
+                        <i class="fas fa-calendar-alt"></i> <span id="summaryDateDisplay"></span>
+                    </span>
+                    <span class="summary-info-block">
+                        <i class="fas fa-clock"></i> <span id="summaryTimeDisplay"></span>
+                    </span>
+                </div>
+
+                <div class="summary-item location-info-group">
+                    <i class="fas fa-map-marker-alt"></i> <span id="summaryLocationDisplay"></span>
+                </div>
+
+                <div class="summary-item description-info-group">
+                    <p class="summary-label">¿Qué está pasando?</p>
+                    <p id="summaryDescriptionDisplay" class="summary-text"></p>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn cancel-btn" id="modalCancelBtn">Cancelar</button>
+                <button type="button" class="btn submit-btn" id="modalConfirmBtn">Enviar Reporte</button>
+                <button type="button" class="btn submit-btn" id="modalOkBtn">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="../scripts/utils.js"></script>
+    <script src="../scripts/reports.js"></script> </body>
+</html>
